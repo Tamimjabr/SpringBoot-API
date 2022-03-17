@@ -3,7 +3,7 @@ package com.example.API.Spring.Boot.student;
 import java.time.LocalDate;
 
 public class Student {
-    private String id;
+    private Long id;
     private String name;
     private Integer age;
     private String email;
@@ -14,7 +14,7 @@ public class Student {
 
     }
 
-    public Student(String id, String name, Integer age, String email, LocalDate dob) {
+    public Student(Long id, String name, Integer age, String email, LocalDate dob) {
         this.id = id;
         this.name = name;
         this.age = age;
@@ -29,11 +29,11 @@ public class Student {
         this.dob = dob;
     }
 
-    public String getId() {
+    public Long getId() {
         return id;
     }
 
-    public void setId(String id) {
+    public void setId(Long id) {
         this.id = id;
     }
 
