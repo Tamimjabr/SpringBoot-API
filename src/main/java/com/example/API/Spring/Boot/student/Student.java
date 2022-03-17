@@ -1,14 +1,20 @@
 package com.example.API.Spring.Boot.student;
 
+import javax.persistence.*;
 import java.time.LocalDate;
 
+// mapping student class to table in DB
+@Entity
+@Table
 public class Student {
+    @Id
+    @SequenceGenerator(name = "student_seq", sequenceName = "student_seq", allocationSize = 1)
+    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "student_seq")
     private Long id;
     private String name;
     private Integer age;
     private String email;
     private LocalDate dob;
-
 
     public Student() {
 
