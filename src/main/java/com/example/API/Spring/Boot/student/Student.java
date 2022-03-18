@@ -2,6 +2,7 @@ package com.example.API.Spring.Boot.student;
 
 import javax.persistence.*;
 import java.time.LocalDate;
+import java.time.Period;
 
 // mapping student class to table in DB
 @Entity
@@ -12,6 +13,8 @@ public class Student {
     @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "student_seq")
     private Long id;
     private String name;
+    // transient means that the field is not persisted in DB as column
+    @Transient
     private Integer age;
     private String email;
     private LocalDate dob;
@@ -20,17 +23,15 @@ public class Student {
 
     }
 
-    public Student(Long id, String name, Integer age, String email, LocalDate dob) {
+    public Student(Long id, String name,  String email, LocalDate dob) {
         this.id = id;
         this.name = name;
-        this.age = age;
         this.email = email;
         this.dob = dob;
     }
     // constructor without id
-    public Student(String name, Integer age, String email, LocalDate dob) {
+    public Student(String name,  String email, LocalDate dob) {
         this.name = name;
-        this.age = age;
         this.email = email;
         this.dob = dob;
     }
@@ -52,7 +53,7 @@ public class Student {
     }
 
     public Integer getAge() {
-        return age;
+        return Period.between(this.dob, LocalDate.now()).getYears();
     }
 
     public void setAge(Integer age) {
