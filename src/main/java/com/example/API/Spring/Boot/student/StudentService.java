@@ -1,9 +1,10 @@
 package com.example.API.Spring.Boot.student;
 
+import com.example.API.Spring.Boot.exception.ConflictException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import java.time.LocalDate;
+
 import java.util.List;
 import java.util.Optional;
 
@@ -25,7 +26,7 @@ public class StudentService {
         // studentRepository.save(student);
         Optional<Student> existedStudent =this.studentRepository.findStudentByEmail(student.getEmail());
         if(existedStudent.isPresent()){
-            throw new IllegalStateException("Student with email: "+student.getEmail()+" already exists");
+            throw new ConflictException("Student with email: "+student.getEmail()+" already exists");
         }
         this.studentRepository.save(student);
 

@@ -9,6 +9,7 @@ public class ApiException {
     // don't show throwable to client
     //  private final Throwable throwable;
     private final HttpStatus httpStatus;
+    private final ZonedDateTime timestamp;
 
     public ApiException(String message, HttpStatus httpStatus, ZonedDateTime timestamp) {
         this.message = message;
@@ -16,15 +17,10 @@ public class ApiException {
         this.timestamp = timestamp;
     }
 
-    private final ZonedDateTime timestamp;
-
-
 
     public String getMessage() {
         return message;
     }
-
-
 
     public HttpStatus getHttpStatus() {
         return httpStatus;
