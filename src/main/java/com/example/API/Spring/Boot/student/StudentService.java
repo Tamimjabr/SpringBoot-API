@@ -24,13 +24,10 @@ public class StudentService {
     public void addStudent(Student student){
         // studentRepository.save(student);
         Optional<Student> existedStudent =this.studentRepository.findStudentByEmail(student.getEmail());
-        System.out.println(existedStudent);
-        System.out.println(existedStudent.isPresent());
         if(existedStudent.isPresent()){
             throw new IllegalStateException("Student with email: "+student.getEmail()+" already exists");
         }
         this.studentRepository.save(student);
-
 
     }
 }
